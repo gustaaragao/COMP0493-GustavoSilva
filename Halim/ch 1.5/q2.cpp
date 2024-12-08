@@ -2,8 +2,24 @@
 #include <vector>
 using namespace std;
 
-void occurrences_substring(string s, string sub) {
-    
+vector<int> occurrences_substring(const string& s,const string& sub) {
+    vector<int> occurrences; // indexes of occurences
+
+    // First occurence
+    size_t pos = s.find(sub, 0);
+
+    // The others
+    while (pos != string::npos) {
+        occurrences.push_back(pos);
+
+        pos = s.find(sub, pos + 1);
+    }
+
+    if (occurrences.empty()) {
+        occurrences.push_back(-1);
+    }
+
+    return occurrences;
 }
 
 int main() {
@@ -15,21 +31,7 @@ int main() {
     getline(cin, t);
     getline(cin, p);
 
-    std::vector<int> indices;
-
-    // Primeira ocorrencia
-    size_t pos = t.find(p, 0);
-
-    // Buscar por outras ocorrencias
-    while (pos != std::string::npos) {
-        indices.push_back(pos);
-
-        pos = t.find(p, pos + 1);
-    }
-
-    if (indices.empty()) {
-        indices.push_back(-1);
-    }
+    vector<int> indices = occurrences_substring(t, p);
 
     for (size_t i = 0; i < indices.size(); i++) {
         if (i != 0)
