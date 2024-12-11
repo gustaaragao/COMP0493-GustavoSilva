@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <vector>
 using namespace std;
 
 vector<int> occurrences_substring(const string& s,const string& sub) {
