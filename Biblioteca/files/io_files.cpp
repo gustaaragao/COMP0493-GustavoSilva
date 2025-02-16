@@ -1,5 +1,4 @@
 // Template para IO de Files
-
 #include <bits/stdc++.h>
 using namespace std;
 
